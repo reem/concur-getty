@@ -1,18 +1,9 @@
 <div ng-include="'partials/navbar'"></div>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+<div class="jumbotron" ng-controller="MainCtrl">
+  <h1>{{tagLine}}</h1>
+  <h3>{{search}}</h3>
 </div>
-
-<div class="row marketing">
-  <div ng-repeat="thing in awesomeThings">
-      <h4>{{thing.name}}</h4>
-      <p>{{thing.info}}</p>
-  </div>
+<div class="tile" ng-repeat="image in images track by $index">
+  <img src={{image}} style="height: 250px; width: 250px;"/>
 </div>
-

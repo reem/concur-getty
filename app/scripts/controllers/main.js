@@ -2,7 +2,18 @@
 
 angular.module('thingApp')
   .controller('MainCtrl', function ($scope, $http) {
-    $http.get('/api/awesomeThings').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
+    $scope.tagLine = 'Your places. Visualized.';
+    $http.get('/api/itineraries').success(function() {
+      var destName = 'San Francisco';
+      $http({
+        url: '/api/getty-images',
+        method: 'POST',
+        data: {
+          search: destName
+        }
+      }).success(function (images) {
+        $scope.search = 'San Francisco';
+        $scope.images = _.pluck(images, 'UrlPreview');
+      });
     });
   });
